@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient.js";
 
 const FALLBACK_TEAM = [
-  { id: "1", name: "Akshay Joseph", role: "President", github: "aditirao", photo_url: null },
-  { id: "2", name: "Kevin Thomas", role: "Vice President", github: "kevinthomas", photo_url: null },
-  { id: "3", name: "Meera Nair", role: "Projects Lead", github: "meeranair", photo_url: null },
-  { id: "4", name: "Sam George", role: "Events Lead", github: "samgeorge", photo_url: null },
+  { id: "1", name: "Akshay Joseph", role: "President", linkedin: "aditirao", photo_url: null },
+  { id: "2", name: "Shanima Shaji", role: "Vice President", linkedin: "kevinthomas", photo_url: null },
+  { id: "3", name: "Harinarayan M R", role: "Technical Head", linkedin: "meeranair", photo_url: null },
+  { id: "4", name: "Alphin D Thomas", role: "Program Chair", linkedin: "samgeorge", photo_url: null },
 ];
 
 const CARD_W = 300;
 const CARD_H = 300;
 const STEP = 190; // horizontal distance between neighboring cards
-const MAX_VISIBLE_OFFSET = 2; // cards further than this fade out completely
+const MAX_VISIBLE_OFFSET = 1; // cards further than this fade out completely
 const AUTO_MS = 4200;
 
 function initials(name) {
@@ -120,9 +120,9 @@ function MemberCard({ m, offset }) {
             <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 2 }}>
               {m.role}
             </div>
-            {m.github && (
+            {m.linkedin && (
               <a
-                href={`https://github.com/${m.github}`}
+                href={`https://www.linkedin.com/in/${m.linkedin_url}`}
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -132,7 +132,7 @@ function MemberCard({ m, offset }) {
                   textDecoration: "none",
                 }}
               >
-                @{m.github}
+                @{m.linkedin}
               </a>
             )}
           </div>
@@ -153,7 +153,7 @@ export default function Team() {
     async function fetchTeam() {
       const { data, error } = await supabase
         .from("members")
-        .select("id, name, role, github, photo_url")
+        .select("id, name, role, linkedin,linkedin_url, photo_url")
         .eq("is_core", true)
         .order("sort_order", { ascending: true });
 

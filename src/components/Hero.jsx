@@ -2,7 +2,8 @@ export default function Hero() {
   return (
     <section id="top" className="section" style={{ paddingTop: 72, }}>
       <div className="wrap">
-        <p className="eyebrow">Saintgits open source club</p>
+        <p className="eyebrow" style={{ fontSize: 18, color: "var(--ink)" }}>Saintgits{" "}
+          <span style={{ color: "var(--muted)" }}>open_source club</span></p>
 
         <h1 style={{ fontSize: "clamp(32px, 5vw, 52px)", lineHeight: 1.15, maxWidth: 720 }}>
           Community,{" "}
@@ -50,8 +51,9 @@ export default function Hero() {
             <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#5fae7d", display: "inline-block" }} />
           </div>
           <div><span style={{ color: "#7cc99b" }}>$</span> git log --oneline -3</div>
-          <div style={{ marginTop: 8, color: "#9aa0a6" }}>a3f9c1 add hacknight signup flow</div>
-          <div style={{ color: "#9aa0a6" }}>e21b04 fix: campus wifi survival guide</div>
+          <div style={{ marginTop: 8, color: "#9aa0a6" }}>b4f2a9 feat: launch <span style={{ color: "#ffffff" }}>prayoga</span> hackathon</div>
+          <div style={{ color: "#9aa0a6" }}>d8c1e3 feat:  <span style={{ color: "#ffffff" }}>UI/UX design </span>competition showdown</div>
+          <div style={{ color: "#9aa0a6" }}>a9e4f2 chore: host <span style={{ color: "#ffffff" }}>build_with_me</span> session</div>
           <div style={{ color: "#9aa0a6" }}>
             7c88de first commit
             <span className="cursor" aria-hidden="true">▍</span>
