@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../supabaseClient.js";
 
-const initialForm = { name: "", email: "", year: "", github: "", why: "" };
+const initialForm = { name: "", email: "", year: "", division: "", github: "", why: "" };
 
 export default function JoinForm() {
   const [form, setForm] = useState(initialForm);
@@ -22,6 +22,7 @@ export default function JoinForm() {
         name: form.name,
         email: form.email,
         year: form.year,
+        division: form.division || null,
         github: form.github || null,
         why: form.why || null,
       },
@@ -103,6 +104,14 @@ export default function JoinForm() {
               <option value="3">3rd year</option>
               <option value="4">4th year</option>
               <option value="grad">grad student</option>
+            </select>
+          </Field>
+
+          <Field label="division">
+            <select value={form.division} onChange={update("division")} style={inputStyle}>
+              <option value="">select one</option>
+              <option value="CS-A">CS-A</option>
+              <option value="CS-B">CS-B</option>
             </select>
           </Field>
 

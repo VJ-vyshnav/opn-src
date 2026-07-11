@@ -37,6 +37,7 @@ export default function ImageCardCarousel({ intervalMs = 3500 }) {
       const { data: files, error } = await supabase.storage
         .from(BUCKET_NAME)
         .list("", { sortBy: { column: "name", order: "asc" } });
+        console.log("Fetched slides:", files, error);
 
       if (ignore || error || !files || files.length === 0) return;
 
