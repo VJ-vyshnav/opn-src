@@ -4,8 +4,8 @@ import { supabase } from "../supabaseClient.js";
 // Shown until Supabase is configured / table is empty, so the page
 // never looks broken during setup.
 const FALLBACK_EVENTS = [
-  { id: "1", hash: "b7a91f", title: "Kickoff hacknight", event_date: "2026-08-14", location: "CS Lab 2" },
-  { id: "2", hash: "e21b04", title: "Intro to git & your first PR", event_date: "2026-08-28", location: "Room 104" },
+  { id: "1", hash: "b7a91f", title: "Kickoff hacknight", event_date: "2026-08-14", location: "Systems Lab" },
+  { id: "2", hash: "e21b04", title: "Intro to git & your first PR", event_date: "2026-08-28", location: "Room 105" },
   { id: "3", hash: "a3f9c1", title: "Maintainer talk: scaling a solo project", event_date: "2026-09-11", location: "Online" },
 ];
 
@@ -82,7 +82,6 @@ export default function EventsTimeline() {
                 }}
               />
               <div style={{ display: "flex", gap: 12, alignItems: "baseline", flexWrap: "wrap" }}>
-                <span className="hash">#{ev.hash || ev.id}</span>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--muted)" }}>
                   {formatDate(ev.event_date)}
                 </span>
