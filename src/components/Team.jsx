@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient.js";
 
 const FALLBACK_TEAM = [
-  { id: "1", name: "Akshay Joseph", role: "President", github: "aditirao", photo_url: null },
-  { id: "2", name: "Kevin Thomas", role: "Vice President", github: "kevinthomas", photo_url: null },
-  { id: "3", name: "Meera Nair", role: "Projects Lead", github: "meeranair", photo_url: null },
-  { id: "4", name: "Sam George", role: "Events Lead", github: "samgeorge", photo_url: null },
+  { id: "1", name: "Akshay Joseph", role: "President", linkedin: "aditirao", photo_url: null },
+  { id: "2", name: "Shanima Shaji", role: "Vice President", linkedin: "kevinthomas", photo_url: null },
+  { id: "3", name: "Harinarayan M R", role: "Technical Head", linkedin: "meeranair", photo_url: null },
+  { id: "4", name: "Alphin D Thomas", role: "Program Chair", linkedin: "samgeorge", photo_url: null },
 ];
 
 const CARD_W = 340;
@@ -121,8 +121,8 @@ function MemberCard({ m, offset, onSelect }) {
             boxShadow: hovered
               ? "0 2px 4px rgba(22,24,26,0.08), 0 14px 28px -8px rgba(22,24,26,0.22)"
               : isActive
-              ? "0 1px 2px rgba(22,24,26,0.06), 0 8px 20px -6px rgba(22,24,26,0.16)"
-              : "0 1px 2px rgba(22,24,26,0.04), 0 6px 14px -6px rgba(22,24,26,0.10)",
+                ? "0 1px 2px rgba(22,24,26,0.06), 0 8px 20px -6px rgba(22,24,26,0.16)"
+                : "0 1px 2px rgba(22,24,26,0.04), 0 6px 14px -6px rgba(22,24,26,0.10)",
             transition: "box-shadow 320ms ease",
           }}
         >
@@ -158,7 +158,7 @@ function MemberCard({ m, offset, onSelect }) {
               >
                 {m.role}
               </div>
-              {m.github && (
+              {m.linkedin && (
                 <>
                   <div
                     style={{
@@ -169,7 +169,7 @@ function MemberCard({ m, offset, onSelect }) {
                     }}
                   />
                   <a
-                    href={`https://github.com/${m.github}`}
+                    href={`https://www.linkedin.com/in/${m.linkedin_url}`}
                     target="_blank"
                     rel="noreferrer"
                     style={{
@@ -179,7 +179,7 @@ function MemberCard({ m, offset, onSelect }) {
                       textDecoration: "none",
                     }}
                   >
-                    @{m.github}
+                    @{m.linkedin}
                   </a>
                 </>
               )}
@@ -202,7 +202,7 @@ export default function Team() {
     async function fetchTeam() {
       const { data, error } = await supabase
         .from("members")
-        .select("id, name, role, github, photo_url")
+        .select("id, name, role, linkedin,linkedin_url, photo_url")
         .eq("is_core", true)
         .order("sort_order", { ascending: true });
 

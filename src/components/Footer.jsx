@@ -1,9 +1,10 @@
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram, Linkedin, Mail } from "lucide-react";
 
 // Update these to your club's real profile URLs
 const SOCIALS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/opensource-saintgits/", Icon: Linkedin },
   { label: "Instagram", href: "https://www.instagram.com/opensource.saintgits?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", Icon: Instagram },
+  { label: "Gmail", href: "#", Icon: Mail },
 ];
 
 export default function Footer() {
