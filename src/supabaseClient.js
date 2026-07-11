@@ -1,0 +1,14 @@
+import { createClient } from "@supabase/supabase-js";
+
+// Vite exposes env vars prefixed with VITE_ on import.meta.env
+// Set these in a .env file at the project root (see .env.example)
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn(
+    "Missing Supabase env vars. Copy .env.example to .env and fill in your project URL + anon key."
+  );
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
